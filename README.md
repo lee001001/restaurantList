@@ -12,9 +12,6 @@ type the title of the movies in search bar
 ### Detail
 Click restaurant card to see details
 
-
-![image](https://raw.githubusercontent.com/lee001001/restaurantList/master/restant.png)
-
 ## Getting Started
 Clone repository to your local computer
 ```
