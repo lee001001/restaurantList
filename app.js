@@ -5,9 +5,9 @@ const port = 3000
 
 // require express-handlebars here
 const exphbs = require('express-handlebars')
-const restaurantList = require('./restaurant.json')
+//const restaurantList = require('./restaurant.json')
 
-mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true }))
+mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true })
 
 
 // 取得資料庫的連線狀態
@@ -29,10 +29,14 @@ app.set('view engine', 'handlebars')
 // setting static files
 app.use(express.static('public'))
 
+
+/*
 // routes setting
 app.get('/', (req, res) => {
   res.render('index', { restaurants: restaurantList.results });
 })
+
+
 
 app.get('/restaurants/:id', (req, res) => {
   console.log('req.params.restaurant_id', req.params.id)
@@ -50,6 +54,7 @@ app.get('/search', (req, res) => {
   console.log('req.query', req.query)
   res.render('index', { restaurants: restaurants })
 })
+*/
 
 // start and listen on the Express server
 app.listen(port, () => {
