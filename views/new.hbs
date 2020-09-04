@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="col">
+  <div class="col mt-2">
     <form action="/restaurants" method="POST">
       <div class="form-groupmt-2">
         <label for="formGroupExampleInput">新增餐廳名字</label>
@@ -10,11 +10,59 @@
         <input type="text" class="form-control" placeholder="餐廳電話" value="phone" name="phone">
       </div>
 
-      <div class="form-group mb-3">
-        <label for="formGroupExampleInput2">新增餐廳圖片</label>
-        <input type="text" class="form-control" placeholder="新增圖片" value="image" name="image">
+      <div class="form-group mb-4">
+        <label for="formGroupExampleInput2">英文名字</label>
+        <input type="text" class="form-control" id="restaurant_en" placeholder="英文名字" value=" {{restaurantname_en}}"
+          name="name_en">
       </div>
-      <button type="submit">Create</button>
+
+      <div class="form-group mb-4">
+        <label for="formGroupExampleInput2">餐廳類型</label>
+        <input type="text" class="form-control" placeholder="餐廳類型" value="{{restaurant.category}}" name="category">
+      </div>
+
+      <div class="form-group mb-4">
+        <label for="formGroupExampleInput2">餐廳地址</label>
+        <input type="text" class="form-control" placeholder="地址" value="{{restaurant.location}}" name="location">
+      </div>
+
+      <div class="form-group mb-4">
+        <label for="formGroupExampleInput2">Google地圖</label>
+        <input type="text" class="form-control" placeholder="google_map" value=" {{restaurant.google_map}}"
+          name="google_map">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">評分1到5分</label>
+        <input type="text" class="form-control" placeholder="1到5分" value="{{restaurant.rating}}" name="rating">
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="formGroupExampleInput2">描述</label>
+        <input type="text" class="form-control" placeholder="餐廳描述" value="{{restaurant.description}}"
+          style="width: 18rem; height:30rem" name="description">
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">餐廳照片</span>
+        </div>
+        <input type="text" aria-label="First name" class="form-control image_input" placeholder="餐廳實景照片網址"
+          spellcheck="false" value="{{restaurant.image}}" name="image">
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="card text-center d-none" style="width: 18rem;">
+          <img src="" alt="網址無效歐 請貼上有效的圖片網址" style="max-width: 600px;" class="card-img-top image_show">
+
+          <div class="card-footer text-muted ">
+            <h5 class="card-title">實景照片預覽</h5>
+          </div>
+        </div>
+
+
+
+        <button type="submit">Create</button>
     </form>
   </div>
 </div>

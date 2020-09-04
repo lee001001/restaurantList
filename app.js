@@ -48,10 +48,16 @@ app.get('/restaurants/new', (req, res) => {
 //新增new POST 路由接住新增資料
 app.post('/restaurants', (req, res) => {
   const name = req.body.name       // 從 req.body 拿出表單裡的 name 資料
-  const phone = req.body.phone       // 從 req.body 拿出表單裡的 name 資料
-  const image = req.body.image       // 從 req.body 拿出表單裡的 name 資料
+  const name_en = req.body.name_en
+  const category = req.body.category
+  const image = req.body.image
+  const location = req.body.location
+  const phone = req.body.phone
+  const google_map = req.body.google_map
+  const rating = req.body.rating
+  const description = req.body.description
 
-  return Restaurant.create({ name })     // 存入資料庫
+  return Restaurant.create({ name, name_en, category, image, location, phone, google_map, rating, description })     // 存入資料庫
     .then(() => res.redirect('/')) // 新增完成後導回首頁
     .catch(error => console.log(error))
 })
@@ -105,8 +111,14 @@ app.post('/restaurants/:id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
-
-
+//CRUＤ中的delete的路由設定
+app.post('/restaurants/:id/delete', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .then(restaurant => restaurant.remove())
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
 
 /*
 app.get('/restaurants/:id', (req, res) => {
