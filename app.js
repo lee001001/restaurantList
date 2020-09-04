@@ -2,6 +2,7 @@
 const express = require('express')
 const mongoose = require('mongoose')  //loading mongoose
 const exphbs = require('express-handlebars')
+const bodyParser = require('body-parser')
 const port = 3000
 const Restaurant = require('./models/restaurant') //載入 Restaurant model
 
@@ -13,6 +14,7 @@ mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true,
 
 // setting static files
 app.use(express.static('public'))
+app.use(bodyParser.urlencoded({ extended: true }))
 
 // 取得資料庫的連線狀態
 const db = mongoose.connection
@@ -37,6 +39,23 @@ app.get('/', (req, res) => {
     .catch(error => console.error(error))
 
 })
+
+//新增new的路由
+app.get('/restaurants/new', (req, res) => {
+  return res.render('new')
+})
+
+//新增new POST 路由接住新增資料
+app.post('/restaurants', (req, res) => {
+  const name = req.body.name       // 從 req.body 拿出表單裡的 name 資料
+  const phone = req.body.phone       // 從 req.body 拿出表單裡的 name 資料
+  const image = req.body.image       // 從 req.body 拿出表單裡的 name 資料
+
+  return Restaurant.create({ name })     // 存入資料庫
+    .then(() => res.redirect('/')) // 新增完成後導回首頁
+    .catch(error => console.log(error))
+})
+
 
 
 /*
