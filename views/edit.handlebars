@@ -1,0 +1,45 @@
+<div class="container">
+  <form action="/restaurants/{{ restaurants._id}}/edit" method="POST">
+    <div class="form-group mt-4">
+      <label for="formGroupExampleInput">餐廳名稱</label>
+      <input type="text" class="form-control" placeholder="餐廳名稱" name="name" value="{{restaurants.name}}">
+    </div>
+    <!--<div class="form-group mb-4">
+      <label for="formGroupExampleInput2">餐廳類型</label>
+      <input type="text" class="form-control" id="restaurant_category" placeholder="餐廳類型"
+        value="{{restaurants.category}}" name="category">
+    </div>
+
+    <div class="form-group mb-4">
+      <label for="formGroupExampleInput2">餐廳電話</label>
+      <input type="text" class="form-control" id="restaurant_phone" placeholder="電話" value="{{restaurants.phone}}"
+        name="phone">
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="formGroupExampleInput2">描述</label>
+      <input type="text" class="form-control" placeholder="餐廳描述" value="{{restaurants.description}}"
+        style="width: 18rem; height:30rem" name="description">
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">餐廳照片</span>
+      </div>
+      <input type="text" aria-label="First name" class="form-control image_input" placeholder="餐廳實景照片網址"
+        spellcheck="false" value="{{restaurants.image}}" name="image">
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="card text-center d-none" style="width: 18rem;">
+        <img src="" alt="網址無效歐 請貼上有效的圖片網址" style="max-width: 600px;" class="card-img-top image_show">
+
+        <div class="card-footer text-muted ">
+          <h5 class="card-title">實景照片預覽</h5>
+        </div>
+      </div>
+    </div> -->
+    <button type="submit" class="btn btn-warning btn-lg">edit</button>
+    <a href="/">back</a>
+  </form>
+</div>
