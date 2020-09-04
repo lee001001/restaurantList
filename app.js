@@ -1,14 +1,17 @@
 // require packages used in the project
 const express = require('express')
 const mongoose = require('mongoose')  //loading mongoose
+const exphbs = require('express-handlebars')
 const port = 3000
 
-// require express-handlebars here
-const exphbs = require('express-handlebars')
+const app = express()
+
 //const restaurantList = require('./restaurant.json')
 
 mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true })
 
+// setting static files
+app.use(express.static('public'))
 
 // 取得資料庫的連線狀態
 const db = mongoose.connection
@@ -21,23 +24,17 @@ db.once('open', () => {
   console.log('mongodb connected!')
 })
 
-
-// setting template engine
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
-app.set('view engine', 'handlebars')
-
-// setting static files
-app.use(express.static('public'))
+app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
+app.set('view engine', 'hbs')
 
 
-/*
 // routes setting
 app.get('/', (req, res) => {
-  res.render('index', { restaurants: restaurantList.results });
+  res.render('index');
 })
 
 
-
+/*
 app.get('/restaurants/:id', (req, res) => {
   console.log('req.params.restaurant_id', req.params.id)
   const restaurant = restaurantList.results.find(restaurant => restaurant.id.toString() === req.params.id)
@@ -55,6 +52,7 @@ app.get('/search', (req, res) => {
   res.render('index', { restaurants: restaurants })
 })
 */
+
 
 // start and listen on the Express server
 app.listen(port, () => {
