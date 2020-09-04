@@ -13,6 +13,22 @@
       <p class="mb-1">
         <span class="text-secondary">
           <i class="fas fa-utensils pr-2"></i>
+          餐廳名稱 :
+        </span>
+        {{restaurant.name}}
+      </p>
+
+      <p class="mb-1">
+        <span class="text-secondary">
+          <i class="fas fa-utensils pr-2"></i>
+          餐廳英文名稱 :
+        </span>
+        {{restaurant.name_en}}
+      </p>
+
+      <p class="mb-1">
+        <span class="text-secondary">
+          <i class="fas fa-utensils pr-2"></i>
           類別：
         </span>
         {{restaurant.category}}
@@ -36,6 +52,15 @@
         </span>
         {{restaurant.phone}}
       </p>
+      <p class="mb-1">
+        <i class="fas fa-thumbs-up alt pr-2"></i>
+        推薦指數：
+        </span>
+        <span class="badge badge-pill badge-danger font-weight-normal">
+          {{restaurant.rating}}
+          <i class="fas fa-star fa-xs"></i>
+        </span>
+      </p>
 
       <p class="mb-5">
         {{restaurant.description}}
@@ -48,10 +73,10 @@
 
   <div class="row ">
     <div class="col text-right">
-      <a href="/">back</a>
-      <a href="/restaurants/{{restaurant._id}}/edit">edit</a>
+      <a class="btn btn-primary" href="/" role="button">back</a>
+      <a class="btn btn-primary" href="/restaurants/{{restaurant._id}}/edit" role="button">edit</a>
       <form action="/restaurants/{{ restaurant._id }}/delete" method="POST" style="display: inline;">
-        <button type="submit" class="btn btn-link btn-sm">delete</button>
+        <button type="submit" class="btn btn-primary">delete</button>
       </form>
     </div>
   </div>

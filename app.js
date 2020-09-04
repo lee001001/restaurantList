@@ -5,7 +5,7 @@ const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const port = 3000
 const Restaurant = require('./models/restaurant') //載入 Restaurant model
-
+const restaurants = require('./restaurant.json') //從資料庫搜尋 name 和 category
 const app = express()
 
 //const restaurantList = require('./restaurant.json')
@@ -119,6 +119,18 @@ app.post('/restaurants/:id/delete', (req, res) => {
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
+
+//增加search路由設定
+app.get('/search', (req, res) => {
+  const keyword = req.query.keyword
+  console.log('req.query', req.query)
+  const filterRestaurant = restaurants.results.filter(item => {
+    return item.name.toLowerCase().includes(keyword.toLowerCase()) || item.category.toLowerCase().includes(keyword.toLowerCase())
+  })
+  // console.log('搜尋', filterRestaurant)
+  res.render('index', { restaurant: filterRestaurant, keyword: keyword })
+})
+
 
 /*
 app.get('/restaurants/:id', (req, res) => {
