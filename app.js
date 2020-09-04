@@ -3,6 +3,7 @@ const express = require('express')
 const mongoose = require('mongoose')  //loading mongoose
 const exphbs = require('express-handlebars')
 const port = 3000
+const Restaurant = require('./models/restaurant') //載入 Restaurant model
 
 const app = express()
 
@@ -30,7 +31,11 @@ app.set('view engine', 'hbs')
 
 // routes setting
 app.get('/', (req, res) => {
-  res.render('index');
+  Restaurant.find()
+    .lean()
+    .then(restaurant => res.render('index', { restaurant }))
+    .catch(error => console.error(error))
+
 })
 
 
