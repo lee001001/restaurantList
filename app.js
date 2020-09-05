@@ -47,6 +47,7 @@ app.get('/restaurants/new', (req, res) => {
 
 //新增new POST 路由接住新增資料
 app.post('/restaurants', (req, res) => {
+  /*
   const name = req.body.name       // 從 req.body 拿出表單裡的 name 資料
   const name_en = req.body.name_en
   const category = req.body.category
@@ -56,8 +57,10 @@ app.post('/restaurants', (req, res) => {
   const google_map = req.body.google_map
   const rating = req.body.rating
   const description = req.body.description
+  */
+  // req.body 物件中的 key name和Restaurant Model 一模一樣
 
-  return Restaurant.create({ name, name_en, category, image, location, phone, google_map, rating, description })     // 存入資料庫
+  return Restaurant.create(req.body)     // 存入資料庫
     .then(() => res.redirect('/')) // 新增完成後導回首頁
     .catch(error => console.log(error))
 })
